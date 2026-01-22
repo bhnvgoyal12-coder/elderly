@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="12dp"
+    android:background="?attr/selectableItemBackground"
+    android:minWidth="120dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/contactPhoto"
+        android:layout_width="@dimen/contact_photo_size"
+        android:layout_height="@dimen/contact_photo_size"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_contact_placeholder"
+        android:contentDescription="@string/contact_photo_description"
+        app:shapeAppearanceOverlay="@style/CircleImageView" />
+
+    <TextView
+        android:id="@+id/contactName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:textSize="@dimen/text_contact_name"
+        android:textColor="@color/text_primary"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:gravity="center"
+        tools:text="Grandma" />
+
+</LinearLayout>

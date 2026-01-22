@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- High contrast colors for visibility -->
+    <color name="background">#FFFFFF</color>
+    <color name="text_primary">#1A1A1A</color>
+    <color name="text_secondary">#4A4A4A</color>
+
+    <!-- Button colors - distinct and recognizable -->
+    <color name="button_phone">#4CAF50</color>
+    <color name="button_messages">#2196F3</color>
+    <color name="button_whatsapp">#25D366</color>
+    <color name="button_camera">#FF9800</color>
+    <color name="button_photos">#9C27B0</color>
+    <color name="button_all_apps">#607D8B</color>
+
+    <color name="button_text">#FFFFFF</color>
+
+    <!-- Material Theme colors -->
+    <color name="md_theme_primary">#4CAF50</color>
+    <color name="md_theme_onPrimary">#FFFFFF</color>
+    <color name="md_theme_background">#FFFFFF</color>
+    <color name="md_theme_surface">#FFFFFF</color>
+</resources>

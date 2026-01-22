@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Simple Home</string>
+
+    <!-- Main buttons -->
+    <string name="phone">Phone</string>
+    <string name="messages">Messages</string>
+    <string name="whatsapp">WhatsApp</string>
+    <string name="camera">Camera</string>
+    <string name="photos">Photos</string>
+    <string name="all_apps">All Apps</string>
+
+    <!-- Section headers -->
+    <string name="quick_call">Quick Call</string>
+    <string name="search_apps">Search apps...</string>
+
+    <!-- Error messages -->
+    <string name="error_no_dialer">Cannot open phone app</string>
+    <string name="error_no_messages">Cannot open messages</string>
+    <string name="error_whatsapp_not_installed">WhatsApp is not installed</string>
+    <string name="error_no_camera">Cannot open camera</string>
+    <string name="error_no_gallery">Cannot open photos</string>
+    <string name="error_cannot_dial">Cannot make call</string>
+
+    <!-- Accessibility -->
+    <string name="contact_photo_description">Contact photo</string>
+    <string name="app_icon_description">App icon</string>
+    <string name="back">Back</string>
+</resources>
