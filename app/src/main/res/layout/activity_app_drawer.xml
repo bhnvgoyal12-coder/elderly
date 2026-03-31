@@ -5,16 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background">
+    android:background="@drawable/bg_galaxy">
 
-    <!-- Header with back button -->
+    <!-- Header with back button - rounded bottom corners -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:padding="@dimen/spacing_medium"
-        android:background="@color/button_all_apps">
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="20dp"
+        android:background="@drawable/bg_header"
+        android:elevation="4dp">
 
         <ImageButton
             android:id="@+id/btnBack"
@@ -33,42 +36,84 @@
             android:textSize="@dimen/text_header"
             android:textColor="@color/button_text"
             android:textStyle="bold"
-            android:layout_marginStart="@dimen/spacing_medium" />
+            android:layout_marginStart="12dp" />
 
     </LinearLayout>
 
-    <!-- Search bar -->
-    <com.google.android.material.textfield.TextInputLayout
+    <!-- Search bar with card styling -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/spacing_medium"
-        app:boxBackgroundMode="outline"
-        app:boxCornerRadiusBottomEnd="12dp"
-        app:boxCornerRadiusBottomStart="12dp"
-        app:boxCornerRadiusTopEnd="12dp"
-        app:boxCornerRadiusTopStart="12dp"
-        app:startIconDrawable="@drawable/ic_search"
-        app:hintEnabled="false">
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_card"
+        android:elevation="2dp"
+        android:padding="4dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/searchInput"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/search_apps"
-            android:textSize="20sp"
-            android:inputType="text"
-            android:imeOptions="actionSearch"
-            android:minHeight="56dp" />
+            app:boxBackgroundMode="none"
+            app:startIconDrawable="@drawable/ic_search"
+            app:startIconTint="@color/text_secondary"
+            app:hintEnabled="false">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/searchInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/search_apps"
+                android:textSize="18sp"
+                android:textColorHint="@color/text_secondary"
+                android:inputType="text"
+                android:imeOptions="actionSearch"
+                android:minHeight="52dp"
+                android:background="@null" />
 
-    <!-- App grid -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/appListRecycler"
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <!-- App grid in card container -->
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/spacing_small"
-        android:clipToPadding="false"
-        tools:listitem="@layout/item_app" />
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_card"
+        android:elevation="2dp"
+        android:padding="8dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/appListRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            tools:listitem="@layout/item_app" />
+
+        <!-- Loading indicator -->
+        <LinearLayout
+            android:id="@+id/loadingIndicator"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:indeterminate="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/loading_apps"
+                android:textSize="16sp"
+                android:textColor="@color/text_secondary" />
+
+        </LinearLayout>
+
+    </FrameLayout>
 
 </LinearLayout>

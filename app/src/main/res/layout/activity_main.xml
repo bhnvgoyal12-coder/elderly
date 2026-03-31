@@ -1,137 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="@color/background">
+    android:id="@+id/rootLayout"
+    android:background="@drawable/bg_afternoon">
 
-    <LinearLayout
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Debug overlay - shows performance metrics -->
+    <include
+        layout="@layout/layout_debug_overlay"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/spacing_large">
+        android:layout_gravity="top|end" />
 
-        <!-- Favorite Contacts Section -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/quick_call"
-            android:textSize="@dimen/text_section_header"
-            android:textColor="@color/text_secondary"
-            android:textStyle="bold"
-            android:layout_marginBottom="@dimen/spacing_medium" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/favoriteContactsRecycler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            android:layout_marginBottom="@dimen/spacing_large"
-            android:orientation="horizontal"
-            tools:listitem="@layout/item_favorite_contact" />
-
-        <!-- Main Actions Grid -->
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:rowCount="3"
-            android:alignmentMode="alignMargins"
-            android:useDefaultMargins="false">
-
-            <!-- Phone Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnPhone"
-                style="@style/LauncherButton"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/button_height"
-                android:layout_columnWeight="1"
-                android:layout_margin="@dimen/spacing_small"
-                android:text="@string/phone"
-                android:backgroundTint="@color/button_phone"
-                app:icon="@drawable/ic_phone"
-                app:iconSize="@dimen/icon_size"
-                app:iconGravity="top"
-                app:iconTint="@color/button_text" />
-
-            <!-- Messages Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnMessages"
-                style="@style/LauncherButton"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/button_height"
-                android:layout_columnWeight="1"
-                android:layout_margin="@dimen/spacing_small"
-                android:text="@string/messages"
-                android:backgroundTint="@color/button_messages"
-                app:icon="@drawable/ic_message"
-                app:iconSize="@dimen/icon_size"
-                app:iconGravity="top"
-                app:iconTint="@color/button_text" />
-
-            <!-- WhatsApp Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnWhatsApp"
-                style="@style/LauncherButton"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/button_height"
-                android:layout_columnWeight="1"
-                android:layout_margin="@dimen/spacing_small"
-                android:text="@string/whatsapp"
-                android:backgroundTint="@color/button_whatsapp"
-                app:icon="@drawable/ic_whatsapp"
-                app:iconSize="@dimen/icon_size"
-                app:iconGravity="top"
-                app:iconTint="@color/button_text" />
-
-            <!-- Camera Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnCamera"
-                style="@style/LauncherButton"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/button_height"
-                android:layout_columnWeight="1"
-                android:layout_margin="@dimen/spacing_small"
-                android:text="@string/camera"
-                android:backgroundTint="@color/button_camera"
-                app:icon="@drawable/ic_camera"
-                app:iconSize="@dimen/icon_size"
-                app:iconGravity="top"
-                app:iconTint="@color/button_text" />
-
-            <!-- Photos Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnPhotos"
-                style="@style/LauncherButton"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/button_height"
-                android:layout_columnWeight="1"
-                android:layout_margin="@dimen/spacing_small"
-                android:text="@string/photos"
-                android:backgroundTint="@color/button_photos"
-                app:icon="@drawable/ic_photos"
-                app:iconSize="@dimen/icon_size"
-                app:iconGravity="top"
-                app:iconTint="@color/button_text" />
-
-            <!-- All Apps Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnAllApps"
-                style="@style/LauncherButton"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/button_height"
-                android:layout_columnWeight="1"
-                android:layout_margin="@dimen/spacing_small"
-                android:text="@string/all_apps"
-                android:backgroundTint="@color/button_all_apps"
-                app:icon="@drawable/ic_apps"
-                app:iconSize="@dimen/icon_size"
-                app:iconGravity="top"
-                app:iconTint="@color/button_text" />
-
-        </GridLayout>
-
-    </LinearLayout>
-</ScrollView>
+</FrameLayout>

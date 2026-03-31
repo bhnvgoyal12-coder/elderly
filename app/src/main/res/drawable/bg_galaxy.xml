@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Base gradient - dark blue to black -->
+    <item android:drawable="@drawable/bg_galaxy_gradient" />
+
+    <!-- Bright stars -->
+    <item
+        android:drawable="@drawable/bg_star"
+        android:top="45dp"
+        android:left="30dp" />
+    <item
+        android:drawable="@drawable/bg_star"
+        android:top="120dp"
+        android:right="50dp" />
+    <item
+        android:drawable="@drawable/bg_star"
+        android:top="200dp"
+        android:left="80dp" />
+    <item
+        android:drawable="@drawable/bg_star"
+        android:top="350dp"
+        android:right="100dp" />
+    <item
+        android:drawable="@drawable/bg_star"
+        android:top="480dp"
+        android:left="45dp" />
+    <item
+        android:drawable="@drawable/bg_star"
+        android:top="600dp"
+        android:right="70dp" />
+    <item
+        android:drawable="@drawable/bg_star"
+        android:top="750dp"
+        android:left="120dp" />
+    <item
+        android:drawable="@drawable/bg_star"
+        android:top="280dp"
+        android:left="200dp" />
+    <item
+        android:drawable="@drawable/bg_star"
+        android:top="550dp"
+        android:right="30dp" />
+    <item
+        android:drawable="@drawable/bg_star"
+        android:top="850dp"
+        android:right="150dp" />
+
+    <!-- Medium stars -->
+    <item
+        android:drawable="@drawable/bg_star_small"
+        android:top="80dp"
+        android:right="120dp" />
+    <item
+        android:drawable="@drawable/bg_star_small"
+        android:top="160dp"
+        android:left="150dp" />
+    <item
+        android:drawable="@drawable/bg_star_small"
+        android:top="250dp"
+        android:right="180dp" />
+    <item
+        android:drawable="@drawable/bg_star_small"
+        android:top="320dp"
+        android:left="20dp" />
+    <item
+        android:drawable="@drawable/bg_star_small"
+        android:top="420dp"
+        android:right="200dp" />
+    <item
+        android:drawable="@drawable/bg_star_small"
+        android:top="520dp"
+        android:left="180dp" />
+    <item
+        android:drawable="@drawable/bg_star_small"
+        android:top="650dp"
+        android:right="250dp" />
+    <item
+        android:drawable="@drawable/bg_star_small"
+        android:top="720dp"
+        android:left="60dp" />
+    <item
+        android:drawable="@drawable/bg_star_small"
+        android:top="800dp"
+        android:right="80dp" />
+    <item
+        android:drawable="@drawable/bg_star_small"
+        android:top="900dp"
+        android:left="100dp" />
+    <item
+        android:drawable="@drawable/bg_star_small"
+        android:top="380dp"
+        android:left="250dp" />
+    <item
+        android:drawable="@drawable/bg_star_small"
+        android:top="580dp"
+        android:right="140dp" />
+
+    <!-- Tiny dim stars -->
+    <item
+        android:drawable="@drawable/bg_star_tiny"
+        android:top="35dp"
+        android:left="100dp" />
+    <item
+        android:drawable="@drawable/bg_star_tiny"
+        android:top="95dp"
+        android:left="220dp" />
+    <item
+        android:drawable="@drawable/bg_star_tiny"
+        android:top="140dp"
+        android:right="30dp" />
+    <item
+        android:drawable="@drawable/bg_star_tiny"
+        android:top="185dp"
+        android:left="50dp" />
+    <item
+        android:drawable="@drawable/bg_star_tiny"
+        android:top="230dp"
+        android:right="220dp" />
+    <item
+        android:drawable="@drawable/bg_star_tiny"
+        android:top="290dp"
+        android:left="130dp" />
+    <item
+        android:drawable="@drawable/bg_star_tiny"
+        android:top="340dp"
+        android:right="60dp" />
+    <item
+        android:drawable="@drawable/bg_star_tiny"
+        android:top="395dp"
+        android:left="90dp" />
+    <item
+        android:drawable="@drawable/bg_star_tiny"
+        android:top="445dp"
+        android:right="160dp" />
+    <item
+        android:drawable="@drawable/bg_star_tiny"
+        android:top="505dp"
+        android:left="40dp" />
+    <item
+        android:drawable="@drawable/bg_star_tiny"
+        android:top="560dp"
+        android:right="100dp" />
+    <item
+        android:drawable="@drawable/bg_star_tiny"
+        android:top="615dp"
+        android:left="170dp" />
+    <item
+        android:drawable="@drawable/bg_star_tiny"
+        android:top="680dp"
+        android:right="190dp" />
+    <item
+        android:drawable="@drawable/bg_star_tiny"
+        android:top="740dp"
+        android:left="210dp" />
+    <item
+        android:drawable="@drawable/bg_star_tiny"
+        android:top="795dp"
+        android:right="40dp" />
+    <item
+        android:drawable="@drawable/bg_star_tiny"
+        android:top="860dp"
+        android:left="25dp" />
+    <item
+        android:drawable="@drawable/bg_star_tiny"
+        android:top="920dp"
+        android:right="120dp" />
+    <item
+        android:drawable="@drawable/bg_star_tiny"
+        android:top="65dp"
+        android:right="170dp" />
+    <item
+        android:drawable="@drawable/bg_star_tiny"
+        android:top="470dp"
+        android:left="280dp" />
+    <item
+        android:drawable="@drawable/bg_star_tiny"
+        android:top="630dp"
+        android:left="15dp" />
+
+</layer-list>

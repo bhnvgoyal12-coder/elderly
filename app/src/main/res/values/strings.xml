@@ -4,7 +4,7 @@
 
     <!-- Main buttons -->
     <string name="phone">Phone</string>
-    <string name="messages">Messages</string>
+    <string name="messages">SMS</string>
     <string name="whatsapp">WhatsApp</string>
     <string name="camera">Camera</string>
     <string name="photos">Photos</string>
@@ -13,6 +13,14 @@
     <!-- Section headers -->
     <string name="quick_call">Quick Call</string>
     <string name="search_apps">Search apps...</string>
+    <string name="my_apps">My Apps</string>
+    <string name="add_apps_hint">Tap + in All Apps to add favorites here</string>
+    <string name="add_to_home">Add to Home</string>
+    <string name="remove_from_home">Remove</string>
+    <string name="app_added">App added to Home</string>
+    <string name="app_removed">App removed from Home</string>
+    <string name="max_apps_reached">Maximum 8 apps allowed</string>
+    <string name="loading_apps">Loading apps...</string>
 
     <!-- Error messages -->
     <string name="error_no_dialer">Cannot open phone app</string>
@@ -26,4 +34,55 @@
     <string name="contact_photo_description">Contact photo</string>
     <string name="app_icon_description">App icon</string>
     <string name="back">Back</string>
+
+    <!-- Essentials screen -->
+    <string name="search_web">Search</string>
+    <string name="search_hint">Search the web...</string>
+    <string name="voice_search">Voice Search</string>
+    <string name="voice_not_available">Voice search not available</string>
+    <string name="battery">Battery</string>
+    <string name="charging">Charging</string>
+    <string name="low_battery_warning">Please charge your phone!</string>
+    <string name="quick_actions">Quick Actions</string>
+    <string name="flashlight">Flashlight</string>
+    <string name="brightness">Brightness</string>
+    <string name="volume">Volume</string>
+    <string name="settings">Settings</string>
+    <string name="swipe_hint">Swipe right for Home</string>
+    <string name="swipe_hint_home">Swipe left for Tools</string>
+    <string name="swipe_hint_left">Tools</string>
+    <string name="swipe_hint_right">Fun</string>
+    <string name="flashlight_on">Flashlight On</string>
+    <string name="flashlight_off">Flashlight Off</string>
+
+    <!-- Setup dialog -->
+    <string name="setup_title">Welcome to Simple Home!</string>
+    <string name="setup_message">For the best experience, set Simple Home as your default launcher. This way, pressing the home button will always bring you here.\n\nWould you like to set it up now?</string>
+    <string name="setup_yes">Set as Default</string>
+    <string name="setup_later">Maybe Later</string>
+
+    <!-- Notifications -->
+    <string name="new_notifications">You have new notifications</string>
+    <string name="tap_to_view">Tap to view</string>
+    <string name="notification_access_title">Enable Notifications</string>
+    <string name="notification_access_message">To show notification badges, please enable notification access for Simple Home in Settings.</string>
+    <string name="enable">Enable</string>
+
+    <!-- Entertainment screen -->
+    <string name="quote_of_the_day">Quote of the Day</string>
+    <string name="news_headlines">News Headlines</string>
+    <string name="refresh">Refresh</string>
+    <string name="news_error">Unable to load news. Tap refresh to try again.</string>
+    <string name="news_loading">Loading news...</string>
+    <string name="swipe_hint_entertainment">Swipe left for Home</string>
+
+    <!-- Language -->
+    <string name="language">Language</string>
+    <string name="select_language">Select Language</string>
+
+    <!-- Quick Call Help -->
+    <string name="quick_call_help">How to add contacts</string>
+    <string name="quick_call_help_title">How to Add Quick Call Contacts</string>
+    <string name="quick_call_help_message">To add contacts here:\n\n1. Open the Phone app\n2. Go to your Contacts\n3. Open the contact you want to add\n4. Tap the star (★) to mark as favorite\n\nStarred contacts will automatically appear here for quick calling!</string>
+    <string name="got_it">Got it</string>
 </resources>

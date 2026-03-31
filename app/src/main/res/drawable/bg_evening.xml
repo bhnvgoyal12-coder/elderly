@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Evening gradient - sunset colors -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:type="linear"
+                android:angle="90"
+                android:startColor="#1a1a2e"
+                android:centerColor="#e94560"
+                android:endColor="#ff9a56" />
+        </shape>
+    </item>
+
+    <!-- Sun setting glow -->
+    <item
+        android:bottom="-100dp"
+        android:left="80dp">
+        <shape android:shape="oval">
+            <size android:width="250dp" android:height="250dp" />
+            <gradient
+                android:type="radial"
+                android:gradientRadius="125dp"
+                android:startColor="#50FF6B35"
+                android:endColor="#00FFFFFF" />
+        </shape>
+    </item>
+</layer-list>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Afternoon gradient - bright blue sky -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:type="linear"
+                android:angle="90"
+                android:startColor="#4A90D9"
+                android:centerColor="#87CEEB"
+                android:endColor="#E0F4FF" />
+        </shape>
+    </item>
+
+    <!-- Subtle cloud wisps -->
+    <item
+        android:top="100dp"
+        android:left="20dp">
+        <shape android:shape="oval">
+            <size android:width="150dp" android:height="40dp" />
+            <solid android:color="#20FFFFFF" />
+        </shape>
+    </item>
+
+    <item
+        android:top="180dp"
+        android:right="40dp">
+        <shape android:shape="oval">
+            <size android:width="120dp" android:height="35dp" />
+            <solid android:color="#15FFFFFF" />
+        </shape>
+    </item>
+</layer-list>

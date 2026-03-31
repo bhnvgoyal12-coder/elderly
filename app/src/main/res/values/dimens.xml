@@ -8,7 +8,7 @@
     <!-- Text sizes - LARGE -->
     <dimen name="text_header">32sp</dimen>
     <dimen name="text_button">24sp</dimen>
-    <dimen name="text_contact_name">20sp</dimen>
+    <dimen name="text_contact_name">16sp</dimen>
     <dimen name="text_section_header">24sp</dimen>
 
     <!-- Spacing -->
@@ -17,7 +17,7 @@
     <dimen name="spacing_small">8dp</dimen>
 
     <!-- Contact photo -->
-    <dimen name="contact_photo_size">100dp</dimen>
+    <dimen name="contact_photo_size">72dp</dimen>
 
     <!-- Corner radius -->
     <dimen name="button_corner_radius">16dp</dimen>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Morning gradient - warm sunrise colors -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:type="linear"
+                android:angle="90"
+                android:startColor="#87CEEB"
+                android:centerColor="#FFE4B5"
+                android:endColor="#FFF8DC" />
+        </shape>
+    </item>
+
+    <!-- Sun glow at top -->
+    <item
+        android:top="-200dp"
+        android:right="50dp">
+        <shape android:shape="oval">
+            <size android:width="300dp" android:height="300dp" />
+            <gradient
+                android:type="radial"
+                android:gradientRadius="150dp"
+                android:startColor="#40FFD700"
+                android:endColor="#00FFFFFF" />
+        </shape>
+    </item>
+</layer-list>

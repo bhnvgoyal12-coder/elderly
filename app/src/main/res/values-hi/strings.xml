@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">सरल होम</string>
+
+    <!-- Main buttons -->
+    <string name="phone">फ़ोन</string>
+    <string name="messages">संदेश</string>
+    <string name="whatsapp">व्हाट्सएप</string>
+    <string name="camera">कैमरा</string>
+    <string name="photos">फ़ोटो</string>
+    <string name="all_apps">सभी ऐप्स</string>
+
+    <!-- Section headers -->
+    <string name="quick_call">त्वरित कॉल</string>
+    <string name="search_apps">ऐप्स खोजें...</string>
+    <string name="my_apps">मेरे ऐप्स</string>
+    <string name="add_apps_hint">यहाँ पसंदीदा जोड़ने के लिए सभी ऐप्स में + दबाएं</string>
+    <string name="add_to_home">होम में जोड़ें</string>
+    <string name="remove_from_home">हटाएं</string>
+    <string name="app_added">ऐप होम में जोड़ा गया</string>
+    <string name="app_removed">ऐप होम से हटाया गया</string>
+    <string name="max_apps_reached">अधिकतम 8 ऐप्स की अनुमति</string>
+    <string name="loading_apps">ऐप्स लोड हो रहे हैं...</string>
+
+    <!-- Error messages -->
+    <string name="error_no_dialer">फ़ोन ऐप नहीं खुल सकता</string>
+    <string name="error_no_messages">संदेश नहीं खुल सकते</string>
+    <string name="error_whatsapp_not_installed">व्हाट्सएप इंस्टॉल नहीं है</string>
+    <string name="error_no_camera">कैमरा नहीं खुल सकता</string>
+    <string name="error_no_gallery">फ़ोटो नहीं खुल सकते</string>
+    <string name="error_cannot_dial">कॉल नहीं कर सकते</string>
+
+    <!-- Accessibility -->
+    <string name="contact_photo_description">संपर्क फ़ोटो</string>
+    <string name="app_icon_description">ऐप आइकन</string>
+    <string name="back">वापस</string>
+
+    <!-- Essentials screen -->
+    <string name="search_web">खोजें</string>
+    <string name="search_hint">वेब पर खोजें...</string>
+    <string name="voice_search">आवाज़ से खोजें</string>
+    <string name="voice_not_available">आवाज़ खोज उपलब्ध नहीं</string>
+    <string name="battery">बैटरी</string>
+    <string name="charging">चार्ज हो रहा है</string>
+    <string name="low_battery_warning">कृपया फ़ोन चार्ज करें!</string>
+    <string name="quick_actions">त्वरित कार्य</string>
+    <string name="flashlight">टॉर्च</string>
+    <string name="brightness">चमक</string>
+    <string name="volume">आवाज़</string>
+    <string name="settings">सेटिंग्स</string>
+    <string name="swipe_hint">होम के लिए दाएं स्वाइप करें</string>
+    <string name="swipe_hint_home">टूल्स के लिए बाएं स्वाइप करें</string>
+    <string name="swipe_hint_left">टूल्स</string>
+    <string name="swipe_hint_right">मनोरंजन</string>
+    <string name="flashlight_on">टॉर्च चालू</string>
+    <string name="flashlight_off">टॉर्च बंद</string>
+
+    <!-- Setup dialog -->
+    <string name="setup_title">सरल होम में आपका स्वागत है!</string>
+    <string name="setup_message">बेहतर अनुभव के लिए, सरल होम को डिफ़ॉल्ट लॉन्चर बनाएं। इस तरह, होम बटन दबाने पर आप हमेशा यहाँ आएंगे।\n\nक्या आप अभी सेट करना चाहते हैं?</string>
+    <string name="setup_yes">डिफ़ॉल्ट बनाएं</string>
+    <string name="setup_later">बाद में</string>
+
+    <!-- Notifications -->
+    <string name="new_notifications">आपके पास नई सूचनाएं हैं</string>
+    <string name="tap_to_view">देखने के लिए टैप करें</string>
+    <string name="notification_access_title">सूचनाएं सक्षम करें</string>
+    <string name="notification_access_message">सूचना बैज दिखाने के लिए, कृपया सेटिंग्स में सरल होम के लिए सूचना पहुंच सक्षम करें।</string>
+    <string name="enable">सक्षम करें</string>
+
+    <!-- Entertainment screen -->
+    <string name="quote_of_the_day">आज का विचार</string>
+    <string name="news_headlines">समाचार</string>
+    <string name="refresh">रिफ्रेश</string>
+    <string name="news_error">समाचार लोड नहीं हो सके। फिर से प्रयास करें।</string>
+    <string name="news_loading">समाचार लोड हो रहे हैं...</string>
+    <string name="swipe_hint_entertainment">होम के लिए बाएं स्वाइप करें</string>
+
+    <!-- Language -->
+    <string name="language">भाषा</string>
+    <string name="select_language">भाषा चुनें</string>
+
+    <!-- Quick Call Help -->
+    <string name="quick_call_help">संपर्क कैसे जोड़ें</string>
+    <string name="quick_call_help_title">त्वरित कॉल संपर्क कैसे जोड़ें</string>
+    <string name="quick_call_help_message">यहाँ संपर्क जोड़ने के लिए:\n\n1. फ़ोन ऐप खोलें\n2. अपने संपर्क पर जाएं\n3. जिस संपर्क को जोड़ना है उसे खोलें\n4. पसंदीदा बनाने के लिए स्टार (★) दबाएं\n\nस्टार किए गए संपर्क यहाँ अपने आप दिखेंगे!</string>
+    <string name="got_it">समझ गया</string>
+</resources>

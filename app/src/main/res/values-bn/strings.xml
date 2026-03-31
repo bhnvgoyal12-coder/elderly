@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">সিম্পল হোম</string>
+
+    <!-- Main buttons -->
+    <string name="phone">ফোন</string>
+    <string name="messages">বার্তা</string>
+    <string name="whatsapp">হোয়াটসঅ্যাপ</string>
+    <string name="camera">ক্যামেরা</string>
+    <string name="photos">ছবি</string>
+    <string name="all_apps">সব অ্যাপস</string>
+
+    <!-- Section headers -->
+    <string name="quick_call">দ্রুত কল</string>
+    <string name="search_apps">অ্যাপ খুঁজুন...</string>
+    <string name="my_apps">আমার অ্যাপস</string>
+    <string name="add_apps_hint">পছন্দের যোগ করতে সব অ্যাপসে + চাপুন</string>
+    <string name="add_to_home">হোমে যোগ করুন</string>
+    <string name="remove_from_home">সরান</string>
+    <string name="app_added">অ্যাপ হোমে যোগ হয়েছে</string>
+    <string name="app_removed">অ্যাপ হোম থেকে সরানো হয়েছে</string>
+    <string name="max_apps_reached">সর্বোচ্চ ৮টি অ্যাপ অনুমোদিত</string>
+    <string name="loading_apps">অ্যাপস লোড হচ্ছে...</string>
+
+    <!-- Error messages -->
+    <string name="error_no_dialer">ফোন অ্যাপ খোলা যাচ্ছে না</string>
+    <string name="error_no_messages">বার্তা খোলা যাচ্ছে না</string>
+    <string name="error_whatsapp_not_installed">হোয়াটসঅ্যাপ ইনস্টল নেই</string>
+    <string name="error_no_camera">ক্যামেরা খোলা যাচ্ছে না</string>
+    <string name="error_no_gallery">ছবি খোলা যাচ্ছে না</string>
+    <string name="error_cannot_dial">কল করা যাচ্ছে না</string>
+
+    <!-- Accessibility -->
+    <string name="contact_photo_description">পরিচিতির ছবি</string>
+    <string name="app_icon_description">অ্যাপ আইকন</string>
+    <string name="back">পেছনে</string>
+
+    <!-- Essentials screen -->
+    <string name="search_web">খুঁজুন</string>
+    <string name="search_hint">ওয়েবে খুঁজুন...</string>
+    <string name="voice_search">ভয়েস সার্চ</string>
+    <string name="voice_not_available">ভয়েস সার্চ নেই</string>
+    <string name="battery">ব্যাটারি</string>
+    <string name="charging">চার্জ হচ্ছে</string>
+    <string name="low_battery_warning">ফোন চার্জ করুন!</string>
+    <string name="quick_actions">দ্রুত কাজ</string>
+    <string name="flashlight">টর্চ</string>
+    <string name="brightness">উজ্জ্বলতা</string>
+    <string name="volume">ভলিউম</string>
+    <string name="settings">সেটিংস</string>
+    <string name="swipe_hint">হোমের জন্য ডানে সোয়াইপ</string>
+    <string name="swipe_hint_home">টুলসের জন্য বামে সোয়াইপ</string>
+    <string name="swipe_hint_left">টুলস</string>
+    <string name="swipe_hint_right">বিনোদন</string>
+    <string name="flashlight_on">টর্চ চালু</string>
+    <string name="flashlight_off">টর্চ বন্ধ</string>
+
+    <!-- Setup dialog -->
+    <string name="setup_title">সিম্পল হোমে স্বাগতম!</string>
+    <string name="setup_message">সেরা অভিজ্ঞতার জন্য, সিম্পল হোমকে ডিফল্ট লঞ্চার হিসেবে সেট করুন।\n\nএখনই সেট করতে চান?</string>
+    <string name="setup_yes">ডিফল্ট করুন</string>
+    <string name="setup_later">পরে</string>
+
+    <!-- Notifications -->
+    <string name="new_notifications">নতুন নোটিফিকেশন আছে</string>
+    <string name="tap_to_view">দেখতে ট্যাপ করুন</string>
+    <string name="notification_access_title">নোটিফিকেশন সক্রিয় করুন</string>
+    <string name="notification_access_message">নোটিফিকেশন ব্যাজ দেখাতে, সেটিংসে সিম্পল হোমের জন্য নোটিফিকেশন অ্যাক্সেস সক্রিয় করুন।</string>
+    <string name="enable">সক্রিয়</string>
+
+    <!-- Entertainment screen -->
+    <string name="quote_of_the_day">আজকের উক্তি</string>
+    <string name="news_headlines">সংবাদ</string>
+    <string name="refresh">রিফ্রেশ</string>
+    <string name="news_error">সংবাদ লোড হয়নি। আবার চেষ্টা করুন।</string>
+    <string name="news_loading">সংবাদ লোড হচ্ছে...</string>
+    <string name="swipe_hint_entertainment">হোমের জন্য বামে সোয়াইপ</string>
+
+    <!-- Language -->
+    <string name="language">ভাষা</string>
+    <string name="select_language">ভাষা নির্বাচন করুন</string>
+
+    <!-- Quick Call Help -->
+    <string name="quick_call_help">পরিচিতি কীভাবে যোগ করবেন</string>
+    <string name="quick_call_help_title">দ্রুত কল পরিচিতি কীভাবে যোগ করবেন</string>
+    <string name="quick_call_help_message">এখানে পরিচিতি যোগ করতে:\n\n1. ফোন অ্যাপ খুলুন\n2. আপনার পরিচিতিতে যান\n3. যে পরিচিতি যোগ করতে চান সেটি খুলুন\n4. পছন্দের হিসেবে চিহ্নিত করতে তারা (★) ট্যাপ করুন\n\nতারা চিহ্নিত পরিচিতি এখানে স্বয়ংক্রিয়ভাবে দেখাবে!</string>
+    <string name="got_it">বুঝেছি</string>
+</resources>

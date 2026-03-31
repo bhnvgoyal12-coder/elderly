@@ -1,6 +1,7 @@
 package com.example.elderlylauncher.adapter
 
 import android.net.Uri
+import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -48,6 +49,7 @@ class FavoriteContactAdapter(
             }
 
             binding.root.setOnClickListener {
+                it.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
                 onClick(contact)
             }
         }

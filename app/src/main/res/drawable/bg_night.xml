@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Night gradient - dark blue to black -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:type="linear"
+                android:angle="135"
+                android:startColor="#0a0a1a"
+                android:centerColor="#0d1b2a"
+                android:endColor="#1b263b" />
+        </shape>
+    </item>
+
+    <!-- Bright stars -->
+    <item android:drawable="@drawable/bg_star" android:top="45dp" android:left="30dp" />
+    <item android:drawable="@drawable/bg_star" android:top="120dp" android:right="50dp" />
+    <item android:drawable="@drawable/bg_star" android:top="200dp" android:left="80dp" />
+    <item android:drawable="@drawable/bg_star" android:top="350dp" android:right="100dp" />
+    <item android:drawable="@drawable/bg_star" android:top="480dp" android:left="45dp" />
+    <item android:drawable="@drawable/bg_star" android:top="600dp" android:right="70dp" />
+    <item android:drawable="@drawable/bg_star" android:top="750dp" android:left="120dp" />
+    <item android:drawable="@drawable/bg_star" android:top="280dp" android:left="200dp" />
+
+    <!-- Medium stars -->
+    <item android:drawable="@drawable/bg_star_small" android:top="80dp" android:right="120dp" />
+    <item android:drawable="@drawable/bg_star_small" android:top="160dp" android:left="150dp" />
+    <item android:drawable="@drawable/bg_star_small" android:top="250dp" android:right="180dp" />
+    <item android:drawable="@drawable/bg_star_small" android:top="420dp" android:right="200dp" />
+    <item android:drawable="@drawable/bg_star_small" android:top="520dp" android:left="180dp" />
+    <item android:drawable="@drawable/bg_star_small" android:top="650dp" android:right="250dp" />
+
+    <!-- Tiny dim stars -->
+    <item android:drawable="@drawable/bg_star_tiny" android:top="35dp" android:left="100dp" />
+    <item android:drawable="@drawable/bg_star_tiny" android:top="95dp" android:left="220dp" />
+    <item android:drawable="@drawable/bg_star_tiny" android:top="185dp" android:left="50dp" />
+    <item android:drawable="@drawable/bg_star_tiny" android:top="290dp" android:left="130dp" />
+    <item android:drawable="@drawable/bg_star_tiny" android:top="395dp" android:left="90dp" />
+    <item android:drawable="@drawable/bg_star_tiny" android:top="505dp" android:left="40dp" />
+    <item android:drawable="@drawable/bg_star_tiny" android:top="615dp" android:left="170dp" />
+    <item android:drawable="@drawable/bg_star_tiny" android:top="740dp" android:left="210dp" />
+
+    <!-- Moon -->
+    <item
+        android:top="60dp"
+        android:right="40dp">
+        <shape android:shape="oval">
+            <size android:width="50dp" android:height="50dp" />
+            <solid android:color="#F5F5DC" />
+        </shape>
+    </item>
+
+</layer-list>

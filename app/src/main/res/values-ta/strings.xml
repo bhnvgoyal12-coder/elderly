@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">எளிய முகப்பு</string>
+
+    <!-- Main buttons -->
+    <string name="phone">தொலைபேசி</string>
+    <string name="messages">செய்தி</string>
+    <string name="whatsapp">வாட்ஸ்அப்</string>
+    <string name="camera">கேமரா</string>
+    <string name="photos">புகைப்படங்கள்</string>
+    <string name="all_apps">அனைத்து ஆப்ஸ்</string>
+
+    <!-- Section headers -->
+    <string name="quick_call">விரைவு அழைப்பு</string>
+    <string name="search_apps">ஆப்ஸ் தேடு...</string>
+    <string name="my_apps">என் ஆப்ஸ்</string>
+    <string name="add_apps_hint">பிடித்தவை சேர்க்க அனைத்து ஆப்ஸில் + தட்டவும்</string>
+    <string name="add_to_home">முகப்பில் சேர்</string>
+    <string name="remove_from_home">நீக்கு</string>
+    <string name="app_added">ஆப் முகப்பில் சேர்க்கப்பட்டது</string>
+    <string name="app_removed">ஆப் முகப்பிலிருந்து நீக்கப்பட்டது</string>
+    <string name="max_apps_reached">அதிகபட்சம் 8 ஆப்ஸ் அனுமதி</string>
+    <string name="loading_apps">ஆப்ஸ் ஏற்றுகிறது...</string>
+
+    <!-- Error messages -->
+    <string name="error_no_dialer">தொலைபேசி ஆப் திறக்க முடியவில்லை</string>
+    <string name="error_no_messages">செய்திகள் திறக்க முடியவில்லை</string>
+    <string name="error_whatsapp_not_installed">வாட்ஸ்அப் நிறுவப்படவில்லை</string>
+    <string name="error_no_camera">கேமரா திறக்க முடியவில்லை</string>
+    <string name="error_no_gallery">புகைப்படங்கள் திறக்க முடியவில்லை</string>
+    <string name="error_cannot_dial">அழைக்க முடியவில்லை</string>
+
+    <!-- Accessibility -->
+    <string name="contact_photo_description">தொடர்பு புகைப்படம்</string>
+    <string name="app_icon_description">ஆப் ஐகான்</string>
+    <string name="back">பின்</string>
+
+    <!-- Essentials screen -->
+    <string name="search_web">தேடு</string>
+    <string name="search_hint">வலையில் தேடு...</string>
+    <string name="voice_search">குரல் தேடல்</string>
+    <string name="voice_not_available">குரல் தேடல் இல்லை</string>
+    <string name="battery">பேட்டரி</string>
+    <string name="charging">சார்ஜ் ஆகிறது</string>
+    <string name="low_battery_warning">தயவுசெய்து தொலைபேசியை சார்ஜ் செய்யுங்கள்!</string>
+    <string name="quick_actions">விரைவு செயல்கள்</string>
+    <string name="flashlight">டார்ச்</string>
+    <string name="brightness">ஒளிர்வு</string>
+    <string name="volume">ஒலி</string>
+    <string name="settings">அமைப்புகள்</string>
+    <string name="swipe_hint">முகப்புக்கு வலது ஸ்வைப்</string>
+    <string name="swipe_hint_home">கருவிகளுக்கு இடது ஸ்வைப்</string>
+    <string name="swipe_hint_left">கருவிகள்</string>
+    <string name="swipe_hint_right">பொழுதுபோக்கு</string>
+    <string name="flashlight_on">டார்ச் ஆன்</string>
+    <string name="flashlight_off">டார்ச் ஆஃப்</string>
+
+    <!-- Setup dialog -->
+    <string name="setup_title">எளிய முகப்புக்கு வரவேற்கிறோம்!</string>
+    <string name="setup_message">சிறந்த அனுபவத்திற்கு, எளிய முகப்பை இயல்புநிலை லாஞ்சராக அமைக்கவும்.\n\nஇப்போது அமைக்க விரும்புகிறீர்களா?</string>
+    <string name="setup_yes">இயல்பாக அமை</string>
+    <string name="setup_later">பின்னர்</string>
+
+    <!-- Notifications -->
+    <string name="new_notifications">புதிய அறிவிப்புகள் உள்ளன</string>
+    <string name="tap_to_view">பார்க்க தட்டவும்</string>
+    <string name="notification_access_title">அறிவிப்புகளை இயக்கு</string>
+    <string name="notification_access_message">அறிவிப்பு பேட்ஜ்களைக் காட்ட, அமைப்புகளில் எளிய முகப்புக்கு அறிவிப்பு அணுகலை இயக்கவும்.</string>
+    <string name="enable">இயக்கு</string>
+
+    <!-- Entertainment screen -->
+    <string name="quote_of_the_day">இன்றைய மேற்கோள்</string>
+    <string name="news_headlines">செய்திகள்</string>
+    <string name="refresh">புதுப்பி</string>
+    <string name="news_error">செய்திகள் ஏற்ற முடியவில்லை. மீண்டும் முயற்சிக்கவும்.</string>
+    <string name="news_loading">செய்திகள் ஏற்றுகிறது...</string>
+    <string name="swipe_hint_entertainment">முகப்புக்கு இடது ஸ்வைப்</string>
+
+    <!-- Language -->
+    <string name="language">மொழி</string>
+    <string name="select_language">மொழியைத் தேர்ந்தெடுக்கவும்</string>
+
+    <!-- Quick Call Help -->
+    <string name="quick_call_help">தொடர்புகளை எப்படி சேர்ப்பது</string>
+    <string name="quick_call_help_title">விரைவு அழைப்பு தொடர்புகளை சேர்ப்பது எப்படி</string>
+    <string name="quick_call_help_message">இங்கே தொடர்புகளை சேர்க்க:\n\n1. தொலைபேசி ஆப்பைத் திறக்கவும்\n2. உங்கள் தொடர்புகளுக்குச் செல்லவும்\n3. சேர்க்க விரும்பும் தொடர்பைத் திறக்கவும்\n4. பிடித்தவையாக குறிக்க நட்சத்திரத்தை (★) தட்டவும்\n\nநட்சத்திரமிட்ட தொடர்புகள் இங்கே தானாக தோன்றும்!</string>
+    <string name="got_it">புரிந்தது</string>
+</resources>

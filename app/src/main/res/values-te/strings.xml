@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">సింపుల్ హోమ్</string>
+
+    <!-- Main buttons -->
+    <string name="phone">ఫోన్</string>
+    <string name="messages">సందేశాలు</string>
+    <string name="whatsapp">వాట్సాప్</string>
+    <string name="camera">కెమెరా</string>
+    <string name="photos">ఫోటోలు</string>
+    <string name="all_apps">అన్ని యాప్స్</string>
+
+    <!-- Section headers -->
+    <string name="quick_call">త్వరిత కాల్</string>
+    <string name="search_apps">యాప్స్ వెతకండి...</string>
+    <string name="my_apps">నా యాప్స్</string>
+    <string name="add_apps_hint">ఇష్టమైనవి జోడించడానికి అన్ని యాప్స్‌లో + నొక్కండి</string>
+    <string name="add_to_home">హోమ్‌కు జోడించు</string>
+    <string name="remove_from_home">తొలగించు</string>
+    <string name="app_added">యాప్ హోమ్‌కు జోడించబడింది</string>
+    <string name="app_removed">యాప్ హోమ్ నుండి తొలగించబడింది</string>
+    <string name="max_apps_reached">గరిష్టంగా 8 యాప్స్ మాత్రమే</string>
+    <string name="loading_apps">యాప్స్ లోడ్ అవుతున్నాయి...</string>
+
+    <!-- Error messages -->
+    <string name="error_no_dialer">ఫోన్ యాప్ తెరవలేకపోయింది</string>
+    <string name="error_no_messages">సందేశాలు తెరవలేకపోయింది</string>
+    <string name="error_whatsapp_not_installed">వాట్సాప్ ఇన్‌స్టాల్ కాలేదు</string>
+    <string name="error_no_camera">కెమెరా తెరవలేకపోయింది</string>
+    <string name="error_no_gallery">ఫోటోలు తెరవలేకపోయింది</string>
+    <string name="error_cannot_dial">కాల్ చేయలేకపోయింది</string>
+
+    <!-- Accessibility -->
+    <string name="contact_photo_description">కాంటాక్ట్ ఫోటో</string>
+    <string name="app_icon_description">యాప్ ఐకాన్</string>
+    <string name="back">వెనుకకు</string>
+
+    <!-- Essentials screen -->
+    <string name="search_web">వెతకండి</string>
+    <string name="search_hint">వెబ్‌లో వెతకండి...</string>
+    <string name="voice_search">వాయిస్ సెర్చ్</string>
+    <string name="voice_not_available">వాయిస్ సెర్చ్ అందుబాటులో లేదు</string>
+    <string name="battery">బ్యాటరీ</string>
+    <string name="charging">ఛార్జ్ అవుతోంది</string>
+    <string name="low_battery_warning">దయచేసి ఫోన్ ఛార్జ్ చేయండి!</string>
+    <string name="quick_actions">త్వరిత చర్యలు</string>
+    <string name="flashlight">టార్చ్</string>
+    <string name="brightness">ప్రకాశం</string>
+    <string name="volume">వాల్యూమ్</string>
+    <string name="settings">సెట్టింగ్స్</string>
+    <string name="swipe_hint">హోమ్ కోసం కుడికి స్వైప్</string>
+    <string name="swipe_hint_home">టూల్స్ కోసం ఎడమకు స్వైప్</string>
+    <string name="swipe_hint_left">టూల్స్</string>
+    <string name="swipe_hint_right">వినోదం</string>
+    <string name="flashlight_on">టార్చ్ ఆన్</string>
+    <string name="flashlight_off">టార్చ్ ఆఫ్</string>
+
+    <!-- Setup dialog -->
+    <string name="setup_title">సింపుల్ హోమ్‌కు స్వాగతం!</string>
+    <string name="setup_message">మెరుగైన అనుభవం కోసం, సింపుల్ హోమ్‌ను డిఫాల్ట్ లాంచర్‌గా సెట్ చేయండి.\n\nఇప్పుడు సెట్ చేయాలనుకుంటున్నారా?</string>
+    <string name="setup_yes">డిఫాల్ట్‌గా సెట్ చేయి</string>
+    <string name="setup_later">తర్వాత</string>
+
+    <!-- Notifications -->
+    <string name="new_notifications">మీకు కొత్త నోటిఫికేషన్లు ఉన్నాయి</string>
+    <string name="tap_to_view">చూడటానికి నొక్కండి</string>
+    <string name="notification_access_title">నోటిఫికేషన్లు ఎనేబుల్ చేయండి</string>
+    <string name="notification_access_message">నోటిఫికేషన్ బ్యాడ్జ్‌లు చూపించడానికి, సెట్టింగ్స్‌లో సింపుల్ హోమ్‌కు నోటిఫికేషన్ యాక్సెస్ ఎనేబుల్ చేయండి.</string>
+    <string name="enable">ఎనేబుల్</string>
+
+    <!-- Entertainment screen -->
+    <string name="quote_of_the_day">నేటి సూక్తి</string>
+    <string name="news_headlines">వార్తలు</string>
+    <string name="refresh">రిఫ్రెష్</string>
+    <string name="news_error">వార్తలు లోడ్ కాలేదు. మళ్ళీ ప్రయత్నించండి.</string>
+    <string name="news_loading">వార్తలు లోడ్ అవుతున్నాయి...</string>
+    <string name="swipe_hint_entertainment">హోమ్ కోసం ఎడమకు స్వైప్</string>
+
+    <!-- Language -->
+    <string name="language">భాష</string>
+    <string name="select_language">భాషను ఎంచుకోండి</string>
+
+    <!-- Quick Call Help -->
+    <string name="quick_call_help">కాంటాక్ట్‌లను ఎలా జోడించాలి</string>
+    <string name="quick_call_help_title">త్వరిత కాల్ కాంటాక్ట్‌లను ఎలా జోడించాలి</string>
+    <string name="quick_call_help_message">ఇక్కడ కాంటాక్ట్‌లను జోడించడానికి:\n\n1. ఫోన్ యాప్ తెరవండి\n2. మీ కాంటాక్ట్‌లకు వెళ్ళండి\n3. జోడించాలనుకునే కాంటాక్ట్ తెరవండి\n4. ఇష్టమైనదిగా గుర్తించడానికి నక్షత్రం (★) నొక్కండి\n\nనక్షత్రం గుర్తించిన కాంటాక్ట్‌లు ఇక్కడ స్వయంచాలకంగా కనిపిస్తాయి!</string>
+    <string name="got_it">అర్థమైంది</string>
+</resources>
