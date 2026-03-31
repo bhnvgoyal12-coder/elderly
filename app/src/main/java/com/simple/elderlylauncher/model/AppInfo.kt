@@ -1,4 +1,4 @@
-package com.example.elderlylauncher.model
+package com.simple.elderlylauncher.model
 
 import android.graphics.drawable.Drawable
 

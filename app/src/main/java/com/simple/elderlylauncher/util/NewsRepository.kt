@@ -1,4 +1,4 @@
-package com.example.elderlylauncher.util
+package com.simple.elderlylauncher.util
 
 import android.util.Log
 import kotlinx.coroutines.Dispatchers

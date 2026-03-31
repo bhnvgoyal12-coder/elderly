@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.elderlylauncher"
+    namespace = "com.simple.elderlylauncher"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.elderlylauncher"
+        applicationId = "com.simple.elderlylauncher"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

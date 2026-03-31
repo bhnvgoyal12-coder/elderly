@@ -1,4 +1,4 @@
-package com.example.elderlylauncher.util
+package com.simple.elderlylauncher.util
 
 import android.content.Context
 import android.content.Intent
@@ -6,7 +6,7 @@ import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import android.widget.Toast
-import com.example.elderlylauncher.R
+import com.simple.elderlylauncher.R
 
 class AppLauncher(private val context: Context) {
 

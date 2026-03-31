@@ -1,4 +1,4 @@
-package com.example.elderlylauncher.model
+package com.simple.elderlylauncher.model
 
 data class FavoriteContact(
     val id: Long,

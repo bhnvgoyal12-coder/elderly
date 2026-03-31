@@ -1,4 +1,4 @@
-package com.example.elderlylauncher.service
+package com.simple.elderlylauncher.service
 
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification

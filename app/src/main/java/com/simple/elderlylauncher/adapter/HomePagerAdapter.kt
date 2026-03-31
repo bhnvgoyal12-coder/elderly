@@ -1,10 +1,10 @@
-package com.example.elderlylauncher.adapter
+package com.simple.elderlylauncher.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.elderlylauncher.R
+import com.simple.elderlylauncher.R
 
 class HomePagerAdapter(
     private val onEssentialsInflated: (View) -> Unit,

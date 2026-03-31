@@ -1,4 +1,4 @@
-package com.example.elderlylauncher.adapter
+package com.simple.elderlylauncher.adapter
 
 import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.elderlylauncher.R
-import com.example.elderlylauncher.databinding.ItemFavoriteAppBinding
-import com.example.elderlylauncher.model.AppInfo
+import com.simple.elderlylauncher.R
+import com.simple.elderlylauncher.databinding.ItemFavoriteAppBinding
+import com.simple.elderlylauncher.model.AppInfo
 
 class FavoriteAppsAdapter(
     private val onAppClick: (AppInfo) -> Unit,

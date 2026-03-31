@@ -1,4 +1,4 @@
-package com.example.elderlylauncher
+package com.simple.elderlylauncher
 
 import android.content.Context
 import android.content.Intent
@@ -11,14 +11,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.elderlylauncher.adapter.AppListAdapter
-import com.example.elderlylauncher.databinding.ActivityAppDrawerBinding
-import com.example.elderlylauncher.model.AppInfo
-import com.example.elderlylauncher.util.AppRepository
-import com.example.elderlylauncher.util.AppUsageTracker
-import com.example.elderlylauncher.util.FavoriteAppsManager
-import com.example.elderlylauncher.util.LocaleHelper
-import com.example.elderlylauncher.util.PerformanceMonitor
+import com.simple.elderlylauncher.adapter.AppListAdapter
+import com.simple.elderlylauncher.databinding.ActivityAppDrawerBinding
+import com.simple.elderlylauncher.model.AppInfo
+import com.simple.elderlylauncher.util.AppRepository
+import com.simple.elderlylauncher.util.AppUsageTracker
+import com.simple.elderlylauncher.util.FavoriteAppsManager
+import com.simple.elderlylauncher.util.LocaleHelper
+import com.simple.elderlylauncher.util.PerformanceMonitor
 import kotlinx.coroutines.launch
 
 class AppDrawerActivity : AppCompatActivity() {

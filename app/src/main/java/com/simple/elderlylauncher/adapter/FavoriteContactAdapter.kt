@@ -1,4 +1,4 @@
-package com.example.elderlylauncher.adapter
+package com.simple.elderlylauncher.adapter
 
 import android.net.Uri
 import android.view.HapticFeedbackConstants
@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.elderlylauncher.R
-import com.example.elderlylauncher.databinding.ItemFavoriteContactBinding
-import com.example.elderlylauncher.model.FavoriteContact
+import com.simple.elderlylauncher.R
+import com.simple.elderlylauncher.databinding.ItemFavoriteContactBinding
+import com.simple.elderlylauncher.model.FavoriteContact
 
 class FavoriteContactAdapter(
     private val onContactClick: (FavoriteContact) -> Unit

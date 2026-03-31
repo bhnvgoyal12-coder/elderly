@@ -1,11 +1,11 @@
-package com.example.elderlylauncher.util
+package com.simple.elderlylauncher.util
 
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.ResolveInfo
 import android.graphics.drawable.Drawable
-import com.example.elderlylauncher.model.AppInfo
+import com.simple.elderlylauncher.model.AppInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock

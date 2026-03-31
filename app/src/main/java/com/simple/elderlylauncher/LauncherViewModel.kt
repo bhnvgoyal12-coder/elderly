@@ -1,4 +1,4 @@
-package com.example.elderlylauncher
+package com.simple.elderlylauncher
 
 import android.content.ContentResolver
 import android.provider.ContactsContract
@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.elderlylauncher.model.FavoriteContact
+import com.simple.elderlylauncher.model.FavoriteContact
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

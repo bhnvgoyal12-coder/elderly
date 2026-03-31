@@ -1,4 +1,4 @@
-package com.example.elderlylauncher.adapter
+package com.simple.elderlylauncher.adapter
 
 import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.elderlylauncher.R
-import com.example.elderlylauncher.databinding.ItemAppBinding
-import com.example.elderlylauncher.model.AppInfo
-import com.example.elderlylauncher.util.AppRepository
+import com.simple.elderlylauncher.R
+import com.simple.elderlylauncher.databinding.ItemAppBinding
+import com.simple.elderlylauncher.model.AppInfo
+import com.simple.elderlylauncher.util.AppRepository
 
 class AppListAdapter(
     private val onAppClick: (AppInfo) -> Unit,

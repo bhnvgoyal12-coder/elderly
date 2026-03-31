@@ -1,4 +1,4 @@
-package com.example.elderlylauncher
+package com.simple.elderlylauncher
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -37,19 +37,19 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.example.elderlylauncher.adapter.FavoriteAppsAdapter
-import com.example.elderlylauncher.adapter.FavoriteContactAdapter
-import com.example.elderlylauncher.adapter.HomePagerAdapter
-import com.example.elderlylauncher.model.AppInfo
-import com.example.elderlylauncher.util.AppLauncher
-import com.example.elderlylauncher.util.AppRepository
-import com.example.elderlylauncher.util.AppUsageTracker
-import com.example.elderlylauncher.util.FavoriteAppsManager
-import com.example.elderlylauncher.util.NewsRepository
-import com.example.elderlylauncher.util.PerformanceMonitor
-import com.example.elderlylauncher.util.QuoteProvider
-import com.example.elderlylauncher.util.LocaleHelper
-import com.example.elderlylauncher.service.NotificationService
+import com.simple.elderlylauncher.adapter.FavoriteAppsAdapter
+import com.simple.elderlylauncher.adapter.FavoriteContactAdapter
+import com.simple.elderlylauncher.adapter.HomePagerAdapter
+import com.simple.elderlylauncher.model.AppInfo
+import com.simple.elderlylauncher.util.AppLauncher
+import com.simple.elderlylauncher.util.AppRepository
+import com.simple.elderlylauncher.util.AppUsageTracker
+import com.simple.elderlylauncher.util.FavoriteAppsManager
+import com.simple.elderlylauncher.util.NewsRepository
+import com.simple.elderlylauncher.util.PerformanceMonitor
+import com.simple.elderlylauncher.util.QuoteProvider
+import com.simple.elderlylauncher.util.LocaleHelper
+import com.simple.elderlylauncher.service.NotificationService
 import android.provider.Settings as AndroidSettings
 import android.content.ComponentName
 import androidx.core.app.NotificationManagerCompat
