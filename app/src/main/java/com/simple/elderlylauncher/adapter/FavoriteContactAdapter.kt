@@ -38,8 +38,10 @@ class FavoriteContactAdapter(
 
             // Load contact photo with Glide
             if (contact.photoUri != null) {
+                val sizePx = binding.root.context.resources.getDimensionPixelSize(R.dimen.contact_photo_size)
                 Glide.with(binding.root.context)
                     .load(Uri.parse(contact.photoUri))
+                    .override(sizePx)
                     .placeholder(R.drawable.ic_contact_placeholder)
                     .error(R.drawable.ic_contact_placeholder)
                     .circleCrop()

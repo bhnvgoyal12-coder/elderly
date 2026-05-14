@@ -1,18 +1,24 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 }
 
+val localProps = Properties().apply {
+    rootProject.file("local.properties").takeIf { it.exists() }?.inputStream()?.use { load(it) }
+}
+
 android {
     namespace = "com.simple.elderlylauncher"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.simple.elderlylauncher"
         minSdk = 26
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        targetSdk = 35
+        versionCode = 5
+        versionName = "1.4"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -20,15 +26,16 @@ android {
     signingConfigs {
         create("release") {
             storeFile = file("../release-keystore.jks")
-            storePassword = "elderly123"
-            keyAlias = "release"
-            keyPassword = "elderly123"
+            storePassword = localProps.getProperty("RELEASE_STORE_PASSWORD", "")
+            keyAlias = localProps.getProperty("RELEASE_KEY_ALIAS", "")
+            keyPassword = localProps.getProperty("RELEASE_KEY_PASSWORD", "")
         }
     }
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             signingConfig = signingConfigs.getByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -39,6 +46,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 
     compileOptions {

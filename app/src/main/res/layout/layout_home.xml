@@ -269,6 +269,7 @@
             android:layout_marginTop="16dp">
 
             <TextView
+                android:id="@+id/btnSwipeTools"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/swipe_hint_left"
@@ -280,13 +281,17 @@
                 android:shadowRadius="2"
                 android:drawableStart="@drawable/ic_arrow_left"
                 android:drawablePadding="4dp"
-                android:gravity="center_vertical" />
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="8dp" />
 
             <View
                 android:layout_width="48dp"
                 android:layout_height="1dp" />
 
             <TextView
+                android:id="@+id/btnSwipeFun"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/swipe_hint_right"
@@ -298,7 +303,10 @@
                 android:shadowRadius="2"
                 android:drawableEnd="@drawable/ic_arrow_right"
                 android:drawablePadding="4dp"
-                android:gravity="center_vertical" />
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="8dp" />
 
         </LinearLayout>
 

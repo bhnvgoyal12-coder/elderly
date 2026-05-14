@@ -19,6 +19,12 @@ object NewsRepository {
     private const val TAG = "NewsRepository"
     private const val MAX_HEADLINES = 5
     private const val TIMEOUT_MS = 10000
+    private const val CACHE_TTL_MS = 5 * 60 * 1000L
+
+    private var cachedResult: NewsResult.Success? = null
+    private var cacheTimestamp: Long = 0
+
+    private val SOURCE_SUFFIX_REGEX = Regex(" - [^-]+$")
 
     /**
      * Builds Google News RSS URL based on device locale.
@@ -48,14 +54,24 @@ object NewsRepository {
      * Fetches top news headlines from Google News.
      * Returns a list of NewsItem on success, or an error message on failure.
      */
-    suspend fun fetchHeadlines(): NewsResult = withContext(Dispatchers.IO) {
-        try {
-            val rssContent = fetchRssFeed()
-            val items = parseRssFeed(rssContent)
-            NewsResult.Success(items.take(MAX_HEADLINES))
-        } catch (e: Exception) {
-            Log.e(TAG, "Failed to fetch news", e)
-            NewsResult.Error(e.message ?: "Unknown error")
+    suspend fun fetchHeadlines(): NewsResult {
+        val cached = cachedResult
+        if (cached != null && System.currentTimeMillis() - cacheTimestamp < CACHE_TTL_MS) {
+            return cached
+        }
+
+        return withContext(Dispatchers.IO) {
+            try {
+                val rssContent = fetchRssFeed()
+                val items = parseRssFeed(rssContent)
+                val result = NewsResult.Success(items.take(MAX_HEADLINES))
+                cachedResult = result
+                cacheTimestamp = System.currentTimeMillis()
+                result
+            } catch (e: Exception) {
+                Log.e(TAG, "Failed to fetch news", e)
+                cached ?: NewsResult.Error(e.message ?: "Unknown error")
+            }
         }
     }
 
@@ -167,7 +183,7 @@ object NewsRepository {
             title.removeSuffix(" - $source")
         } else {
             // Try to remove any " - Source" pattern at the end
-            title.replace(Regex(" - [^-]+$"), "")
+            title.replace(SOURCE_SUFFIX_REGEX, "")
         }
     }
 

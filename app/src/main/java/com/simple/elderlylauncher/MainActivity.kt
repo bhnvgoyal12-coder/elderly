@@ -57,11 +57,16 @@ import com.google.android.material.button.MaterialButton
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(), NotificationService.NotificationCountListener {
+
+    companion object {
+        private const val SWIPE_THRESHOLD = 180
+        private const val SWIPE_VELOCITY_THRESHOLD = 200
+        private const val TOP_REGION_HEIGHT_DP = 250
+    }
 
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(LocaleHelper.wrap(newBase))
@@ -93,10 +98,10 @@ class MainActivity : AppCompatActivity(), NotificationService.NotificationCountL
     private var notificationIndicator: View? = null
     private var notificationText: TextView? = null
 
-    // Text-to-speech for reading quotes
     private var textToSpeech: TextToSpeech? = null
     private var isTtsReady = false
     private var currentQuoteText: String = ""
+    private var isBatteryReceiverRegistered = false
 
     // Debug overlay views
     private var debugOverlay: View? = null
@@ -172,8 +177,15 @@ class MainActivity : AppCompatActivity(), NotificationService.NotificationCountL
             // Camera not available
         }
 
-        // Pre-load app list in background
-        CoroutineScope(Dispatchers.Main).launch {
+        textToSpeech = TextToSpeech(this) { status ->
+            if (status == TextToSpeech.SUCCESS) {
+                val result = textToSpeech?.setLanguage(Locale.getDefault())
+                isTtsReady = result != TextToSpeech.LANG_MISSING_DATA &&
+                             result != TextToSpeech.LANG_NOT_SUPPORTED
+            }
+        }
+
+        lifecycleScope.launch {
             AppRepository.preloadApps(applicationContext)
         }
 
@@ -257,13 +269,13 @@ class MainActivity : AppCompatActivity(), NotificationService.NotificationCountL
             showLanguageDialog()
         }
 
-        // Register battery receiver
         val filter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
             registerReceiver(batteryReceiver, filter, Context.RECEIVER_NOT_EXPORTED)
         } else {
             registerReceiver(batteryReceiver, filter)
         }
+        isBatteryReceiverRegistered = true
     }
 
     private fun setupHomePage(view: View) {
@@ -358,6 +370,16 @@ class MainActivity : AppCompatActivity(), NotificationService.NotificationCountL
             startActivity(Intent(this, AppDrawerActivity::class.java))
         }
 
+        view.findViewById<TextView>(R.id.btnSwipeTools)?.setOnClickListener {
+            it.vibrate()
+            viewPager.setCurrentItem(HomePagerAdapter.PAGE_ESSENTIALS, true)
+        }
+
+        view.findViewById<TextView>(R.id.btnSwipeFun)?.setOnClickListener {
+            it.vibrate()
+            viewPager.setCurrentItem(HomePagerAdapter.PAGE_ENTERTAINMENT, true)
+        }
+
         // Check permissions
         checkPermissionsAndLoad()
 
@@ -366,15 +388,6 @@ class MainActivity : AppCompatActivity(), NotificationService.NotificationCountL
     }
 
     private fun setupEntertainmentPage(view: View) {
-        // Initialize Text-to-Speech
-        textToSpeech = TextToSpeech(this) { status ->
-            if (status == TextToSpeech.SUCCESS) {
-                val result = textToSpeech?.setLanguage(Locale.getDefault())
-                isTtsReady = result != TextToSpeech.LANG_MISSING_DATA &&
-                             result != TextToSpeech.LANG_NOT_SUPPORTED
-            }
-        }
-
         // Setup daily quote
         val quoteText = view.findViewById<TextView>(R.id.quoteText)
         val quoteAuthor = view.findViewById<TextView>(R.id.quoteAuthor)
@@ -401,7 +414,7 @@ class MainActivity : AppCompatActivity(), NotificationService.NotificationCountL
             newsError?.visibility = View.GONE
             newsContainer?.removeAllViews()
 
-            CoroutineScope(Dispatchers.Main).launch {
+            lifecycleScope.launch {
                 when (val result = NewsRepository.fetchHeadlines()) {
                     is NewsRepository.NewsResult.Success -> {
                         newsLoading?.visibility = View.GONE
@@ -542,10 +555,6 @@ class MainActivity : AppCompatActivity(), NotificationService.NotificationCountL
     @SuppressLint("ClickableViewAccessibility")
     private fun setupSwipeDownGesture(view: View) {
         val gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
-            private val SWIPE_THRESHOLD = 180
-            private val SWIPE_VELOCITY_THRESHOLD = 200
-            private val TOP_REGION_HEIGHT = 250 // Only trigger from top 250dp of screen
-
             override fun onFling(
                 e1: MotionEvent?,
                 e2: MotionEvent,
@@ -556,8 +565,7 @@ class MainActivity : AppCompatActivity(), NotificationService.NotificationCountL
                 val diffY = e2.y - startY
                 val diffX = (e2.x) - (e1?.x ?: 0f)
 
-                // Convert top region to pixels
-                val topRegionPx = TOP_REGION_HEIGHT * resources.displayMetrics.density
+                val topRegionPx = TOP_REGION_HEIGHT_DP * resources.displayMetrics.density
 
                 // Only trigger if:
                 // 1. Started from top region of the screen
@@ -659,10 +667,9 @@ class MainActivity : AppCompatActivity(), NotificationService.NotificationCountL
 
     override fun onDestroy() {
         super.onDestroy()
-        try {
+        if (isBatteryReceiverRegistered) {
             unregisterReceiver(batteryReceiver)
-        } catch (e: Exception) {
-            // Receiver not registered
+            isBatteryReceiverRegistered = false
         }
         // Turn off flashlight if on
         if (isFlashlightOn) {

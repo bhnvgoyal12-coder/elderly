@@ -3,24 +3,20 @@ package com.simple.elderlylauncher.util
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.content.pm.ResolveInfo
 import android.graphics.drawable.Drawable
+import android.util.LruCache
 import com.simple.elderlylauncher.model.AppInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 
-/**
- * Singleton repository for caching installed apps.
- * Pre-loads app list to speed up app drawer opening.
- */
 object AppRepository {
 
     private var cachedApps: List<AppInfo>? = null
-    private var cachedResolveInfos: List<ResolveInfo>? = null
     private val mutex = Mutex()
     private var isLoading = false
+    private val iconCache = LruCache<String, Drawable>(50)
 
     /**
      * Pre-load app metadata (without icons) for fast initial display.
@@ -41,9 +37,7 @@ object AppRepository {
             }
 
             val resolveInfos = pm.queryIntentActivities(mainIntent, PackageManager.GET_META_DATA)
-            cachedResolveInfos = resolveInfos
 
-            // Load app info with lightweight placeholder icons first
             val apps = resolveInfos
                 .filter { it.activityInfo.packageName != context.packageName }
                 .map { resolveInfo ->
@@ -77,18 +71,18 @@ object AppRepository {
      * Load icon for a specific package (called on-demand by adapter).
      */
     fun getAppIcon(context: Context, packageName: String): Drawable? {
+        iconCache.get(packageName)?.let { return it }
         return try {
-            context.packageManager.getApplicationIcon(packageName)
+            context.packageManager.getApplicationIcon(packageName).also {
+                iconCache.put(packageName, it)
+            }
         } catch (e: Exception) {
             null
         }
     }
 
-    /**
-     * Clear cache when apps might have changed.
-     */
     fun invalidateCache() {
         cachedApps = null
-        cachedResolveInfos = null
+        iconCache.evictAll()
     }
 }

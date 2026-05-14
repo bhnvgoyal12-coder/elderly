@@ -46,14 +46,14 @@ class LauncherViewModel : ViewModel() {
             selectionArgs,
             sortOrder
         )?.use { cursor ->
-            val idIndex = cursor.getColumnIndex(ContactsContract.Contacts._ID)
-            val nameIndex = cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME_PRIMARY)
+            val idIndex = cursor.getColumnIndexOrThrow(ContactsContract.Contacts._ID)
+            val nameIndex = cursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME_PRIMARY)
             val photoIndex = cursor.getColumnIndex(ContactsContract.Contacts.PHOTO_URI)
 
             while (cursor.moveToNext()) {
                 val contactId = cursor.getLong(idIndex)
                 val name = cursor.getString(nameIndex) ?: "Unknown"
-                val photoUri = cursor.getString(photoIndex)
+                val photoUri = if (photoIndex >= 0) cursor.getString(photoIndex) else null
 
                 // Get phone number for this contact
                 val phoneNumber = getPhoneNumber(contentResolver, contactId)
@@ -90,7 +90,7 @@ class LauncherViewModel : ViewModel() {
                 val numberIndex = cursor.getColumnIndex(
                     ContactsContract.CommonDataKinds.Phone.NUMBER
                 )
-                return cursor.getString(numberIndex)
+                if (numberIndex >= 0) return cursor.getString(numberIndex)
             }
         }
         return null

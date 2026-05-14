@@ -3,23 +3,17 @@ package com.simple.elderlylauncher.util
 import android.app.ActivityManager
 import android.content.Context
 import android.os.Debug
-import android.os.Handler
-import android.os.Looper
 import android.os.SystemClock
 import android.util.Log
 import android.view.Choreographer
+import com.simple.elderlylauncher.BuildConfig
 import java.text.DecimalFormat
 
-/**
- * Performance monitoring utility for tracking launcher metrics.
- * Enable DEBUG_MODE to see real-time performance data.
- */
 object PerformanceMonitor {
 
     private const val TAG = "LauncherPerf"
 
-    // Set to true to enable performance logging
-    var DEBUG_MODE = false
+    val DEBUG_MODE = BuildConfig.DEBUG
 
     // Timing trackers
     private var coldStartTime: Long = 0
@@ -153,7 +147,7 @@ object PerformanceMonitor {
      * Start tracking frame rate
      */
     fun startFrameTracking() {
-        if (isTrackingFrames) return
+        if (!DEBUG_MODE || isTrackingFrames) return
 
         isTrackingFrames = true
         frameCount = 0

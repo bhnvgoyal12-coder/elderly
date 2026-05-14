@@ -74,9 +74,9 @@ class AppDrawerActivity : AppCompatActivity() {
     private fun addToHome(appInfo: AppInfo) {
         if (favoriteAppsManager.addFavoriteApp(appInfo.packageName)) {
             Toast.makeText(this, R.string.app_added, Toast.LENGTH_SHORT).show()
-            appAdapter.notifyDataSetChanged()
+            appAdapter.submitList(appAdapter.currentList.toList())
         } else if (favoriteAppsManager.isFavorite(appInfo.packageName)) {
-            // Already a favorite - do nothing
+            // Already a favorite
         } else {
             Toast.makeText(this, R.string.max_apps_reached, Toast.LENGTH_SHORT).show()
         }

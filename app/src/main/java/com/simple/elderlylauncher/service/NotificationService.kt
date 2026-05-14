@@ -10,9 +10,9 @@ import android.service.notification.StatusBarNotification
 class NotificationService : NotificationListenerService() {
 
     companion object {
-        private var instance: NotificationService? = null
-        private var notificationCount = 0
-        private var listener: NotificationCountListener? = null
+        @Volatile private var instance: NotificationService? = null
+        @Volatile private var notificationCount = 0
+        @Volatile private var listener: NotificationCountListener? = null
 
         fun getNotificationCount(): Int = notificationCount
 
