@@ -13,7 +13,7 @@
     <!-- Section headers -->
     <string name="quick_call">Quick Call</string>
     <string name="search_apps">Search apps...</string>
-    <string name="my_apps">My Apps</string>
+    <string name="my_apps">Favorite Apps</string>
     <string name="add_apps_hint">Tap + in All Apps to add favorites here</string>
     <string name="add_to_home">Add to Home</string>
     <string name="remove_from_home">Remove</string>
@@ -74,6 +74,30 @@
     <string name="games_title">Play Games</string>
     <string name="games_subtitle">Word games, puzzles, and more</string>
     <string name="games_cannot_open">Cannot open games. Check your internet connection.</string>
+
+    <!-- SOS / Emergency -->
+    <string name="sos_title">Emergency</string>
+    <string name="sos_subtitle_unset">Tap to set up your emergency contact</string>
+    <string name="sos_subtitle_set">Tap to call %1$s</string>
+    <string name="sos_setup_title">Emergency Contact</string>
+    <string name="sos_setup_message">Pick the person you want to call when you need urgent help. You can change this any time by holding the Emergency button.</string>
+    <string name="sos_pick_contact">Pick from Contacts</string>
+    <string name="sos_cancel">Cancel</string>
+    <string name="sos_confirm_title">Calling for help</string>
+    <string name="sos_confirm_message">Calling %1$s in %2$d…</string>
+    <string name="sos_call_now">Call now</string>
+    <string name="sos_no_number">That contact has no phone number. Please pick another.</string>
+    <string name="sos_no_picker">Cannot open contacts. Please try again.</string>
+    <string name="sos_change_title">Emergency contact: %1$s</string>
+    <string name="sos_change">Change contact</string>
+    <string name="sos_remove">Remove</string>
+
+    <!-- On This Day photo card -->
+    <string name="on_this_day_title">On This Day</string>
+    <string name="on_this_day_years_ago">%1$d years ago</string>
+    <string name="on_this_day_year_ago">1 year ago</string>
+    <string name="on_this_day_grant_access">Allow photo access to see memories from this day in past years</string>
+    <string name="on_this_day_grant_button">Allow</string>
     <string name="refresh">Refresh</string>
     <string name="news_error">Unable to load news. Tap refresh to try again.</string>
     <string name="news_loading">Loading news...</string>

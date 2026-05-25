@@ -63,6 +63,96 @@
 
         </LinearLayout>
 
+        <!-- On This Day photo memory - hidden until a matching photo is found -->
+        <FrameLayout
+            android:id="@+id/onThisDayCard"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/bg_card"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:elevation="2dp"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone"
+            android:clipToOutline="true"
+            android:contentDescription="@string/on_this_day_title">
+
+            <ImageView
+                android:id="@+id/onThisDayImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="@null" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_photo_label_gradient" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/on_this_day_title"
+                    android:textSize="14sp"
+                    android:textColor="#FFFFFF"
+                    android:alpha="0.85"
+                    android:letterSpacing="0.08" />
+
+                <TextView
+                    android:id="@+id/onThisDayYearsAgo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-medium"
+                    android:layout_marginTop="2dp" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <!-- On This Day permission prompt - shown only when access is missing -->
+        <LinearLayout
+            android:id="@+id/onThisDayPrompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_card"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="16dp"
+            android:elevation="2dp"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/on_this_day_grant_access"
+                android:textSize="14sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginEnd="12dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGrantPhotos"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/on_this_day_grant_button" />
+
+        </LinearLayout>
+
         <!-- Daily Quote Card -->
         <LinearLayout
             android:layout_width="match_parent"

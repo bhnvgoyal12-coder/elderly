@@ -52,6 +52,11 @@ import com.simple.elderlylauncher.util.NewsRepository
 import com.simple.elderlylauncher.util.PerformanceMonitor
 import com.simple.elderlylauncher.util.QuoteProvider
 import com.simple.elderlylauncher.util.LocaleHelper
+import com.simple.elderlylauncher.util.SosManager
+import com.simple.elderlylauncher.util.OnThisDayLoader
+import android.provider.ContactsContract
+import android.os.CountDownTimer
+import android.widget.FrameLayout
 import com.simple.elderlylauncher.service.NotificationService
 import android.provider.Settings as AndroidSettings
 import android.content.ComponentName
@@ -85,6 +90,9 @@ class MainActivity : AppCompatActivity(), NotificationService.NotificationCountL
     private var favoriteAppsAdapter: FavoriteAppsAdapter? = null
     private lateinit var favoriteAppsManager: FavoriteAppsManager
     private lateinit var usageTracker: AppUsageTracker
+    private lateinit var sosManager: SosManager
+    private var sosSubtitleView: TextView? = null
+    private var entertainmentView: View? = null
 
     // Essentials page views
     private var batteryPercentText: TextView? = null
@@ -151,6 +159,44 @@ class MainActivity : AppCompatActivity(), NotificationService.NotificationCountL
         }
     }
 
+    /**
+     * Contact picker for the SOS emergency contact. Returns a Phone-row URI which we
+     * query for display name + number. On Android 11+ this works without any extra
+     * permission because the picker is a system component.
+     */
+    private val photosPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { granted ->
+        if (granted) {
+            // Re-run the loader now that we can read MediaStore
+            entertainmentView?.let { loadOnThisDay(it) }
+        }
+    }
+
+    private val sosContactPickerLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode != RESULT_OK) return@registerForActivityResult
+        val uri = result.data?.data ?: return@registerForActivityResult
+        val projection = arrayOf(
+            ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+            ContactsContract.CommonDataKinds.Phone.NUMBER
+        )
+        contentResolver.query(uri, projection, null, null, null)?.use { cursor ->
+            if (!cursor.moveToFirst()) return@use
+            val nameIdx = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
+            val numIdx = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
+            val name = if (nameIdx >= 0) cursor.getString(nameIdx) else null
+            val number = if (numIdx >= 0) cursor.getString(numIdx) else null
+            if (number.isNullOrBlank()) {
+                Toast.makeText(this, R.string.sos_no_number, Toast.LENGTH_SHORT).show()
+                return@use
+            }
+            sosManager.set(name.orEmpty(), number)
+            refreshSosSubtitle()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         // Mark cold start timing
         if (isFirstCreate) {
@@ -168,6 +214,7 @@ class MainActivity : AppCompatActivity(), NotificationService.NotificationCountL
         // First-run only: pre-add YouTube (or any other default) if installed
         favoriteAppsManager.seedDefaultFavoritesIfNeeded(this)
         usageTracker = AppUsageTracker(this)
+        sosManager = SosManager(this)
 
         // Set time-based background
         updateBackgroundForTimeOfDay()
@@ -233,6 +280,21 @@ class MainActivity : AppCompatActivity(), NotificationService.NotificationCountL
     }
 
     private fun setupEssentialsPage(view: View) {
+        // SOS / Emergency button
+        sosSubtitleView = view.findViewById(R.id.sosSubtitle)
+        refreshSosSubtitle()
+        view.findViewById<View>(R.id.sosCard)?.apply {
+            setOnClickListener {
+                it.vibrate()
+                onSosTapped()
+            }
+            setOnLongClickListener {
+                it.vibrate()
+                showSosSettings()
+                true
+            }
+        }
+
         // Battery views
         batteryPercentText = view.findViewById(R.id.batteryPercent)
         batteryStatusText = view.findViewById(R.id.batteryStatus)
@@ -420,11 +482,16 @@ class MainActivity : AppCompatActivity(), NotificationService.NotificationCountL
     }
 
     private fun setupEntertainmentPage(view: View) {
+        entertainmentView = view
+
         // Games card → shuffled.online via Chrome Custom Tabs
         view.findViewById<View>(R.id.gamesCard)?.setOnClickListener {
             it.vibrate()
             openGames()
         }
+
+        // On This Day photo memory card
+        loadOnThisDay(view)
 
         // Setup daily quote
         val quoteText = view.findViewById<TextView>(R.id.quoteText)
@@ -497,6 +564,70 @@ class MainActivity : AppCompatActivity(), NotificationService.NotificationCountL
             Toast.makeText(this, "Cannot open link", Toast.LENGTH_SHORT).show()
         }
     }
+
+    // ---------- On This Day ----------
+
+    /** Pick the right runtime permission for the device's SDK level. */
+    private fun photosPermissionName(): String =
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU)
+            Manifest.permission.READ_MEDIA_IMAGES
+        else
+            "android.permission.READ_EXTERNAL_STORAGE"
+
+    private fun hasPhotosPermission(): Boolean =
+        ContextCompat.checkSelfPermission(this, photosPermissionName()) ==
+                PackageManager.PERMISSION_GRANTED
+
+    private fun loadOnThisDay(view: View) {
+        val card = view.findViewById<FrameLayout>(R.id.onThisDayCard) ?: return
+        val image = view.findViewById<ImageView>(R.id.onThisDayImage) ?: return
+        val yearsAgoText = view.findViewById<TextView>(R.id.onThisDayYearsAgo) ?: return
+        val prompt = view.findViewById<View>(R.id.onThisDayPrompt)
+        val grantButton = view.findViewById<MaterialButton>(R.id.btnGrantPhotos)
+
+        if (!hasPhotosPermission()) {
+            card.visibility = View.GONE
+            prompt?.visibility = View.VISIBLE
+            grantButton?.setOnClickListener {
+                it.vibrate()
+                photosPermissionLauncher.launch(photosPermissionName())
+            }
+            return
+        }
+        prompt?.visibility = View.GONE
+
+        lifecycleScope.launch {
+            val memory = OnThisDayLoader.findToday(applicationContext)
+            if (memory == null) {
+                card.visibility = View.GONE
+                return@launch
+            }
+            yearsAgoText.text = if (memory.yearsAgo == 1) {
+                getString(R.string.on_this_day_year_ago)
+            } else {
+                getString(R.string.on_this_day_years_ago, memory.yearsAgo)
+            }
+            com.bumptech.glide.Glide.with(this@MainActivity)
+                .load(memory.uri)
+                .centerCrop()
+                .into(image)
+            card.visibility = View.VISIBLE
+            card.setOnClickListener {
+                it.vibrate()
+                try {
+                    val viewIntent = Intent(Intent.ACTION_VIEW).apply {
+                        setDataAndType(memory.uri, "image/*")
+                        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                    }
+                    startActivity(viewIntent)
+                } catch (e: Exception) {
+                    Toast.makeText(this@MainActivity, "Cannot open photo", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    // ---------- /On This Day ----------
 
     private fun openGames() {
         val url = "https://shuffled.online"
@@ -644,6 +775,115 @@ class MainActivity : AppCompatActivity(), NotificationService.NotificationCountL
             false // Don't consume the event, let it propagate
         }
     }
+
+    // ---------- SOS / Emergency ----------
+
+    private fun refreshSosSubtitle() {
+        val contact = sosManager.get()
+        sosSubtitleView?.text = if (contact == null) {
+            getString(R.string.sos_subtitle_unset)
+        } else {
+            getString(R.string.sos_subtitle_set, contact.name.ifBlank { contact.number })
+        }
+    }
+
+    private fun onSosTapped() {
+        val contact = sosManager.get()
+        if (contact == null) {
+            showSosSetup()
+        } else {
+            startSosCountdown(contact)
+        }
+    }
+
+    private fun showSosSetup() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.sos_setup_title)
+            .setMessage(R.string.sos_setup_message)
+            .setPositiveButton(R.string.sos_pick_contact) { _, _ -> launchContactPicker() }
+            .setNegativeButton(R.string.sos_cancel, null)
+            .show()
+    }
+
+    private fun launchContactPicker() {
+        try {
+            val intent = Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI)
+            sosContactPickerLauncher.launch(intent)
+        } catch (e: Exception) {
+            Toast.makeText(this, R.string.sos_no_picker, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    /**
+     * 3-second cancellable countdown before dialing. Uses ACTION_DIAL (no CALL_PHONE
+     * permission needed) so the dialer opens pre-filled with the number — the user
+     * just taps the green call icon. Safer than auto-dialing and avoids permission UX.
+     */
+    private fun startSosCountdown(contact: SosManager.SosContact) {
+        val totalSeconds = 3
+        val dialog = MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.sos_confirm_title)
+            .setMessage(getString(R.string.sos_confirm_message, contact.name.ifBlank { contact.number }, totalSeconds))
+            .setPositiveButton(R.string.sos_call_now, null) // overridden below to NOT dismiss too early
+            .setNegativeButton(R.string.sos_cancel, null)
+            .setCancelable(false)
+            .create()
+
+        val timer = object : CountDownTimer((totalSeconds * 1000L) + 250, 1000) {
+            override fun onTick(msUntilFinished: Long) {
+                val remaining = (msUntilFinished / 1000).toInt().coerceAtLeast(1)
+                dialog.setMessage(
+                    getString(R.string.sos_confirm_message, contact.name.ifBlank { contact.number }, remaining)
+                )
+            }
+            override fun onFinish() {
+                dialog.dismiss()
+                dialEmergency(contact.number)
+            }
+        }
+
+        dialog.setOnDismissListener { timer.cancel() }
+        dialog.setOnShowListener {
+            dialog.getButton(android.app.AlertDialog.BUTTON_POSITIVE)?.setOnClickListener {
+                timer.cancel()
+                dialog.dismiss()
+                dialEmergency(contact.number)
+            }
+        }
+        dialog.show()
+        timer.start()
+    }
+
+    private fun dialEmergency(number: String) {
+        try {
+            val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$number")).apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
+            startActivity(intent)
+        } catch (e: Exception) {
+            Toast.makeText(this, "Cannot open dialer", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun showSosSettings() {
+        val contact = sosManager.get()
+        if (contact == null) {
+            // Long-pressed before setup → fall through to setup
+            showSosSetup()
+            return
+        }
+        MaterialAlertDialogBuilder(this)
+            .setTitle(getString(R.string.sos_change_title, contact.name.ifBlank { contact.number }))
+            .setPositiveButton(R.string.sos_change) { _, _ -> launchContactPicker() }
+            .setNegativeButton(R.string.sos_remove) { _, _ ->
+                sosManager.clear()
+                refreshSosSubtitle()
+            }
+            .setNeutralButton(R.string.sos_cancel, null)
+            .show()
+    }
+
+    // ---------- /SOS ----------
 
     @SuppressLint("WrongConstant")
     private fun expandNotificationPanel() {
