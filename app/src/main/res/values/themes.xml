@@ -12,22 +12,30 @@
         <item name="android:windowLightNavigationBar">true</item>
     </style>
 
-    <!-- Modern rounded button style -->
+    <!-- Modern rounded button style. All sizes resolve through dimens.xml,
+         which has screen-size variants (default, sw360dp, sw411dp, sw600dp, sw720dp).
+         Text auto-sizes so labels shrink instead of clipping when translations are wide. -->
     <style name="LauncherButton" parent="Widget.Material3.Button">
         <item name="android:minHeight">@dimen/button_height</item>
         <item name="android:minWidth">@dimen/button_min_width</item>
         <item name="android:textSize">@dimen/text_button</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:fontFamily">sans-serif-medium</item>
-        <item name="cornerRadius">24dp</item>
-        <item name="iconPadding">12dp</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+        <item name="iconSize">@dimen/icon_size</item>
+        <item name="iconPadding">@dimen/button_icon_padding</item>
         <item name="iconGravity">top</item>
         <item name="android:textColor">@color/button_text</item>
         <item name="android:elevation">4dp</item>
         <item name="android:stateListAnimator">@null</item>
         <item name="android:gravity">center</item>
-        <item name="android:paddingTop">16dp</item>
-        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingTop">@dimen/button_padding_top</item>
+        <item name="android:paddingBottom">@dimen/button_padding_bottom</item>
+        <item name="android:maxLines">1</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">@dimen/text_button_min</item>
+        <item name="autoSizeMaxTextSize">@dimen/text_button</item>
+        <item name="autoSizeStepGranularity">1sp</item>
     </style>
 
     <!-- Card style for sections -->

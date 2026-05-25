@@ -36,6 +36,10 @@
 
     <color name="button_text">#FFFFFF</color>
 
+    <!-- Games card (Entertainment page) -->
+    <color name="games_accent">#6A1B9A</color>
+    <color name="games_accent_dark">#4A148C</color>
+
     <!-- Warning/Alert colors -->
     <color name="battery_low">#E53935</color>
     <color name="battery_warning">#FB8C00</color>

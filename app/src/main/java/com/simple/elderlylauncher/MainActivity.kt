@@ -32,7 +32,10 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -159,8 +162,11 @@ class MainActivity : AppCompatActivity(), NotificationService.NotificationCountL
 
         viewPager = findViewById(R.id.viewPager)
         rootLayout = findViewById(R.id.rootLayout)
+        applySystemBarInsets(viewPager)
         appLauncher = AppLauncher(this)
         favoriteAppsManager = FavoriteAppsManager(this)
+        // First-run only: pre-add YouTube (or any other default) if installed
+        favoriteAppsManager.seedDefaultFavoritesIfNeeded(this)
         usageTracker = AppUsageTracker(this)
 
         // Set time-based background
@@ -193,6 +199,22 @@ class MainActivity : AppCompatActivity(), NotificationService.NotificationCountL
         setupBackButton()
         checkFirstLaunch()
         checkNotificationAccessAfterDelay()
+    }
+
+    /**
+     * Apply system bar insets (status bar + nav bar + display cutout) as padding.
+     * Lets the background draw edge-to-edge while keeping content out from under system UI.
+     * Re-applies on configuration changes (rotation, gesture nav toggle, etc.).
+     */
+    private fun applySystemBarInsets(target: View) {
+        ViewCompat.setOnApplyWindowInsetsListener(target) { v, insets ->
+            val bars = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+            v.setPadding(bars.left, bars.top, bars.right, bars.bottom)
+            insets
+        }
+        ViewCompat.requestApplyInsets(target)
     }
 
     private fun setupViewPager() {
@@ -380,14 +402,30 @@ class MainActivity : AppCompatActivity(), NotificationService.NotificationCountL
             viewPager.setCurrentItem(HomePagerAdapter.PAGE_ENTERTAINMENT, true)
         }
 
+        // Tapping the empty-state hint opens the app drawer so the user can add favorites
+        view.findViewById<View>(R.id.emptyAppsHint)?.setOnClickListener {
+            it.vibrate()
+            startActivity(Intent(this, AppDrawerActivity::class.java))
+        }
+
         // Check permissions
         checkPermissionsAndLoad()
 
         // Setup swipe down to expand notifications
         setupSwipeDownGesture(view)
+
+        // Show favorites (or empty hint) immediately now that the view is ready,
+        // rather than waiting for the next onResume.
+        loadFavoriteApps()
     }
 
     private fun setupEntertainmentPage(view: View) {
+        // Games card → shuffled.online via Chrome Custom Tabs
+        view.findViewById<View>(R.id.gamesCard)?.setOnClickListener {
+            it.vibrate()
+            openGames()
+        }
+
         // Setup daily quote
         val quoteText = view.findViewById<TextView>(R.id.quoteText)
         val quoteAuthor = view.findViewById<TextView>(R.id.quoteAuthor)
@@ -457,6 +495,25 @@ class MainActivity : AppCompatActivity(), NotificationService.NotificationCountL
             startActivity(intent)
         } catch (e: Exception) {
             Toast.makeText(this, "Cannot open link", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun openGames() {
+        val url = "https://shuffled.online"
+        // Custom Tabs gives an in-app browser experience: back returns to the launcher
+        // cleanly, no app switching confusion. Falls back to default browser if none.
+        try {
+            val customTabs = CustomTabsIntent.Builder()
+                .setShowTitle(true)
+                .setUrlBarHidingEnabled(true)
+                .build()
+            customTabs.launchUrl(this, Uri.parse(url))
+        } catch (e: Exception) {
+            try {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+            } catch (e2: Exception) {
+                Toast.makeText(this, R.string.games_cannot_open, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

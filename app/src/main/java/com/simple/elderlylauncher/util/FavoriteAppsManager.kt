@@ -12,7 +12,15 @@ class FavoriteAppsManager(context: Context) {
     companion object {
         private const val PREFS_NAME = "favorite_apps"
         private const val KEY_FAVORITES = "favorites"
+        private const val KEY_DEFAULTS_SEEDED = "defaults_seeded"
         private const val MAX_FAVORITES = 8 // Limit to keep UI clean
+
+        // Packages pre-added as favorites on first launch.
+        // Each is only added if the app is actually installed on the device.
+        // Add more entries here to expand the default home set.
+        private val DEFAULT_FAVORITES = listOf(
+            "com.google.android.youtube"
+        )
     }
 
     fun getFavoriteApps(): List<String> {
@@ -58,5 +66,31 @@ class FavoriteAppsManager(context: Context) {
 
     private fun saveFavorites(favorites: List<String>) {
         prefs.edit().putString(KEY_FAVORITES, favorites.joinToString(",")).apply()
+    }
+
+    /**
+     * Seed default favorite apps (e.g. YouTube) on first run only.
+     *
+     * Runs exactly once per install — tracked by [KEY_DEFAULTS_SEEDED] — so if the
+     * user later removes a seeded app it will NOT come back. Each candidate is
+     * verified to be actually installed via getLaunchIntentForPackage before being
+     * added; missing apps are silently skipped.
+     */
+    fun seedDefaultFavoritesIfNeeded(context: Context) {
+        if (prefs.getBoolean(KEY_DEFAULTS_SEEDED, false)) return
+
+        val pm = context.packageManager
+        val favorites = getFavoriteApps().toMutableList()
+
+        for (packageName in DEFAULT_FAVORITES) {
+            if (favorites.size >= MAX_FAVORITES) break
+            if (favorites.contains(packageName)) continue
+            if (pm.getLaunchIntentForPackage(packageName) != null) {
+                favorites.add(packageName)
+            }
+        }
+
+        saveFavorites(favorites)
+        prefs.edit().putBoolean(KEY_DEFAULTS_SEEDED, true).apply()
     }
 }

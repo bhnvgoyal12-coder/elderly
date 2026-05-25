@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:gravity="bottom"
         android:padding="16dp">
 
         <!-- Notification Indicator -->
@@ -124,7 +125,6 @@
                     android:text="@string/phone"
                     android:backgroundTint="@color/button_phone"
                     app:icon="@drawable/ic_phone"
-                    app:iconSize="44dp"
                     app:iconTint="@color/button_text" />
 
                 <!-- SMS Button -->
@@ -138,7 +138,6 @@
                     android:text="@string/messages"
                     android:backgroundTint="@color/button_messages"
                     app:icon="@drawable/ic_message"
-                    app:iconSize="44dp"
                     app:iconTint="@color/button_text" />
 
                 <!-- WhatsApp Button -->
@@ -152,7 +151,6 @@
                     android:text="@string/whatsapp"
                     android:backgroundTint="@color/button_whatsapp"
                     app:icon="@drawable/ic_whatsapp"
-                    app:iconSize="44dp"
                     app:iconTint="@color/button_text" />
 
                 <!-- Camera Button -->
@@ -166,7 +164,6 @@
                     android:text="@string/camera"
                     android:backgroundTint="@color/button_camera"
                     app:icon="@drawable/ic_camera"
-                    app:iconSize="44dp"
                     app:iconTint="@color/button_text" />
 
                 <!-- Photos Button -->
@@ -180,7 +177,6 @@
                     android:text="@string/photos"
                     android:backgroundTint="@color/button_photos"
                     app:icon="@drawable/ic_photos"
-                    app:iconSize="44dp"
                     app:iconTint="@color/button_text" />
 
                 <!-- All Apps Button -->
@@ -194,7 +190,6 @@
                     android:text="@string/all_apps"
                     android:backgroundTint="@color/button_all_apps"
                     app:icon="@drawable/ic_apps"
-                    app:iconSize="44dp"
                     app:iconTint="@color/button_text" />
 
             </GridLayout>
@@ -229,17 +224,21 @@
 
         </LinearLayout>
 
-        <!-- Empty state hint -->
+        <!-- Empty state hint - tappable, opens the app drawer -->
         <LinearLayout
             android:id="@+id/emptyAppsHint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/bg_card"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
             android:padding="24dp"
             android:elevation="2dp"
             android:gravity="center"
-            android:visibility="gone">
+            android:visibility="gone"
+            android:contentDescription="@string/add_apps_hint">
 
             <ImageView
                 android:layout_width="48dp"

@@ -9,6 +9,8 @@ import android.view.HapticFeedbackConstants
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.simple.elderlylauncher.adapter.AppListAdapter
@@ -44,10 +46,23 @@ class AppDrawerActivity : AppCompatActivity() {
         usageTracker = AppUsageTracker(this)
 
         updateBackgroundForTimeOfDay()
+        applySystemBarInsets()
         setupAppList()
         setupBackButton()
         setupSearch()
         loadApps()
+    }
+
+    private fun applySystemBarInsets() {
+        // Apply insets to the inner content (header + search + list), keep background edge-to-edge
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->
+            val bars = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+            binding.root.setPadding(bars.left, bars.top, bars.right, bars.bottom)
+            insets
+        }
+        ViewCompat.requestApplyInsets(binding.root)
     }
 
     private fun setupAppList() {

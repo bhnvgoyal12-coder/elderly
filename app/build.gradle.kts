@@ -17,8 +17,8 @@ android {
         applicationId = "com.simple.elderlylauncher"
         minSdk = 26
         targetSdk = 35
-        versionCode = 5
-        versionName = "1.4"
+        versionCode = 10
+        versionName = "1.9"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -78,6 +78,9 @@ dependencies {
 
     // Glide (for contact photos)
     implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    // Chrome Custom Tabs for opening web links in-app (back returns to launcher)
+    implementation("androidx.browser:browser:1.8.0")
 
     // Testing
     testImplementation("junit:junit:4.13.2")

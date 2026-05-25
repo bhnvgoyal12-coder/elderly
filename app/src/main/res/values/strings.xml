@@ -71,6 +71,9 @@
     <!-- Entertainment screen -->
     <string name="quote_of_the_day">Quote of the Day</string>
     <string name="news_headlines">News Headlines</string>
+    <string name="games_title">Play Games</string>
+    <string name="games_subtitle">Word games, puzzles, and more</string>
+    <string name="games_cannot_open">Cannot open games. Check your internet connection.</string>
     <string name="refresh">Refresh</string>
     <string name="news_error">Unable to load news. Tap refresh to try again.</string>
     <string name="news_loading">Loading news...</string>
